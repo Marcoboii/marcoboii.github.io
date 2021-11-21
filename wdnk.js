@@ -215,6 +215,5 @@ function setGen() {
         console.log("matched"+wordInfo[j].def[i]);
       }
     }
-
   }
 }
