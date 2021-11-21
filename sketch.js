@@ -50,6 +50,7 @@ function draw() {
   noStroke();
   textSize(15);
   fill(0);
+  text("Give me two nouns, and I will write a poem for you.",width/2,15);
   if (generated == true) {
     for (let i = 0; i < drawSeq; i++) {
       text(result[i], width / 2, 200 + i * 20);
