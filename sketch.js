@@ -6,34 +6,6 @@ let inp1, inp2;
 let okButton, regenButton;
 let newWord;
 let userword = [];
-let allDefText = [];
-let defTexts1 = [];
-let defTexts0 = [];
-let wordInfo = [{}, {}];
-let defCount, relatedCount, exampleCount;
-let rgRules1 = {
-  "start": "The $adj.nr() $noun $verb.nr() $noun.nr().",
-}
-let rgRules2 = {
-  "start": "It is $simNoun0, $simNoun1 and $simNoun0.nr.It is $simNoun1.nr, $simNoun0.nr and $simNoun1.nr.",
-}
-let rgRules3 = {
-  "start": "It is a work of art, a mystery, a sensation and a lifestyle.",
-}
-let wordnikKey = "13sbuiermi5tg6yuci6gdrza80r8bzr1kndgf29b142efkril"
-
-// load our grammar
-let rg1 = new RiTa.grammar(rgRules1);
-let rg2 = new RiTa.grammar(rgRules2);
-let rg3 = new RiTa.grammar(rgRules3);
-
-let markovObjOpts = {
-  maxLengthMatch: 5,
-};
-let markovGenOpts = {
-  minLength: 6,
-};
-let rm1 = RiTa.markov(3, markovObjOpts);
 let result;
 let generated;
 let drawSeq = 0;
@@ -49,7 +21,6 @@ let currentMillis = 0;
 function setup() {
   //***canvas and configs
   createCanvas(windowWidth, windowHeight);
-
   background(255);
   stroke(255);
   //***make the inputs
@@ -57,8 +28,8 @@ function setup() {
   let inputDistance = 25;
   inp1 = createInput("");
   inp2 = createInput("");
-  inp1.position(width / 2 - inputWidth - inputDistance - 8, 20);
-  inp2.position(width / 2 + inputDistance, 20);
+  inp1.position(width / 2 - inputWidth - inputDistance - 8, 60);
+  inp2.position(width / 2 + inputDistance, 60);
   inp1.size(inputWidth);
   inp2.size(inputWidth);
   textSize(30);
@@ -68,7 +39,7 @@ function setup() {
   //***ok button to get def
   okButton = createButton("Write a poem for me");
   okButton.style('width', '150px');
-  okButton.position(width / 2 - 75, 100);
+  okButton.position(width / 2 - 75, 140);
   okButton.mousePressed(gen);
   //regenButton.position(60, 60);
   //regenButton.mousePressed(displayResult);
@@ -99,7 +70,7 @@ function displayResult() {
     } else if (i < 4) {
       result.push(" ");
     } else if (i < 5) {
-      result.push(rm1.generate(3, markovGenOpts));
+      result.push(rm1.generate(5, markovGenOpts));
     } else if (i < 6) {
       result.push(" ");
     } else if (i < 7) {

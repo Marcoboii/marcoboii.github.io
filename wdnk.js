@@ -1,3 +1,34 @@
+
+let allDefText = [];
+let defTexts1 = [];
+let defTexts0 = [];
+let wordInfo = [{}, {}];
+let defCount, relatedCount, exampleCount;
+let rgRules1 = {
+  "start": "The $adj.nr() $noun $verb.nr() $noun.nr().",
+}
+let rgRules2 = {
+  "start": "It is a $simNoun0, a $simNoun1 and a $simNoun0.nr.It is a $simNoun1.nr, a $simNoun0.nr and a $simNoun1.nr.",
+}
+let rgRules3 = {
+  "start": "It is a work of art, a mystery, a sensation and a lifestyle.",
+}
+let wordnikKey = "13sbuiermi5tg6yuci6gdrza80r8bzr1kndgf29b142efkril"
+
+// load our grammar
+let rg1 = new RiTa.grammar(rgRules1);
+let rg2 = new RiTa.grammar(rgRules2);
+let rg3 = new RiTa.grammar(rgRules3);
+
+let markovObjOpts = {
+  maxLengthMatch: 6,
+};
+let markovGenOpts = {
+  minLength: 8,
+  allowDuplicates: false,
+};
+let rm1 = RiTa.markov(3, markovObjOpts);
+
 function containQuo(inputTxt) {
   const regex = new RegExp('\\\"', 'gm');
   return regex.test(inputTxt);
@@ -174,5 +205,14 @@ function setGen() {
 
   rm1.addText(wordInfo[0].example);
   rm1.addText(wordInfo[1].example);
+  rm1.addText(wordInfo[0].def);
+  rm1.addText(wordInfo[1].def);
+  for (let j = 0; j < 2; j++) {
+    for (let i = 0; i < wordInfo[0].def.length; i++) {
+      if(!wordInfo[j].def[i].match(/\(|\</gm)){
+        rm1.addText(wordInfo[j].def[i]);
+      }
+    }
 
+  }
 }
