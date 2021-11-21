@@ -22,6 +22,7 @@ let nosePos;
 function setup() {
   //***canvas and configs
   createCanvas(windowWidth, windowHeight);
+  pixelDensity(2);
   background(255);
   stroke(255);
   //***make the inputs
@@ -50,7 +51,7 @@ function draw() {
   noStroke();
   textSize(15);
   fill(0);
-  text("Give me two nouns, and I will write a poem for you.",width/2,15);
+  text("Give me two nouns, and           I will write a poem for you.",width/2,45);
   if (generated == true) {
     for (let i = 0; i < drawSeq; i++) {
       text(result[i], width / 2, 200 + i * 20);
