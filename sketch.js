@@ -10,6 +10,7 @@ let result;
 let generated;
 let drawSeq = 0;
 let currentMillis = 0;
+let nosePos;
 //rules: A
 //A theoretical economic system characterized by the collective ownership of property and by the organization of labor for the common advantage of all members.
 //A ADJ CLUSTER          NOUN   VERB             ADJ CLUSTER    NOUN
@@ -34,7 +35,6 @@ function setup() {
   inp2.size(inputWidth);
   textSize(30);
   textAlign(CENTER, CENTER);
-  text("+", width / 2, 70);
   //***make the buttons
   //***ok button to get def
   okButton = createButton("Write a poem for me");
@@ -56,7 +56,13 @@ function draw() {
     }
     drawSeq = constrain(int((millis() - currentMillis) / 1000), 0, result.length);
   }
-
+  textSize(25);
+  nosePos = map(defCount + relatedCount + exampleCount, 0, 6, 0, 40);
+  fill(153);
+  text("+", width / 2, 75 + nosePos);
+  noFill();
+  stroke(0);
+  ellipse(width / 2, 75-2 + 40,20,20);
 
 }
 

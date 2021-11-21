@@ -1,9 +1,10 @@
-
 let allDefText = [];
 let defTexts1 = [];
 let defTexts0 = [];
 let wordInfo = [{}, {}];
-let defCount, relatedCount, exampleCount;
+let defCount = 0;
+let relatedCount = 0;
+let exampleCount = 0;
 let rgRules1 = {
   "start": "The $adj.nr() $noun $verb.nr() $noun.nr().",
 }
@@ -39,6 +40,8 @@ function gen() {
   if (inp1.value() == wordInfo[0].input && inp2.value() == wordInfo[1].input) {
     displayResult();
   } else {
+    //result = [];
+
     rm1 = RiTa.markov(3, markovObjOpts);
     rg1.removeRule("adj");
     rg1.removeRule("adverb");
@@ -205,12 +208,11 @@ function setGen() {
 
   rm1.addText(wordInfo[0].example);
   rm1.addText(wordInfo[1].example);
-  rm1.addText(wordInfo[0].def);
-  rm1.addText(wordInfo[1].def);
   for (let j = 0; j < 2; j++) {
     for (let i = 0; i < wordInfo[0].def.length; i++) {
-      if(!wordInfo[j].def[i].match(/\(|\</gm)){
+      if (!wordInfo[j].def[i].match(/\(|\</gm)) {
         rm1.addText(wordInfo[j].def[i]);
+        console.log("matched"+wordInfo[j].def[i]);
       }
     }
 
