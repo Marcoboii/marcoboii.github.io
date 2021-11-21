@@ -38,9 +38,9 @@ function setup() {
   textAlign(CENTER, CENTER);
   //***make the buttons
   //***ok button to get def
-  okButton = createButton("Write a poem for me");
-  okButton.style('width', '150px');
-  okButton.position(width / 2 - 75, 140);
+  okButton = createButton("Speak!");
+  okButton.style('width', '70px');
+  okButton.position(width / 2 - 35, 140);
   okButton.mousePressed(gen);
   //regenButton.position(60, 60);
   //regenButton.mousePressed(displayResult);

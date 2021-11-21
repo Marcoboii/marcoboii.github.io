@@ -9,7 +9,7 @@ let rgRules1 = {
   "start": "The $adj.nr() $noun $verb.nr() $noun.nr().",
 }
 let rgRules2 = {
-  "start": "It is a $simNoun0, a $simNoun1 and a $simNoun0.nr.It is a $simNoun1.nr, a $simNoun0.nr and a $simNoun1.nr.",
+  "start": "It is $simNoun0.art(), $simNoun1.art() and $simNoun0.nr().art().It is $simNoun1.nr().art(), $simNoun0.nr().art() and $simNoun1.nr().art().",
 }
 let rgRules3 = {
   "start": "It is a work of art, a mystery, a sensation and a lifestyle.",
