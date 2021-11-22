@@ -59,7 +59,7 @@ function draw() {
     drawSeq = constrain(int((millis() - currentMillis) / 1000), 0, result.length);
   }
   textSize(25);
-  nosePos = map(defCount + relatedCount + exampleCount, 0, 6, 0, 40);
+  nosePos = map(defCount + relatedCount + exampleCount, 0, 6, 0, 45);
   fill(153);
   text("+", width / 2, 75 + nosePos);
   noFill();
